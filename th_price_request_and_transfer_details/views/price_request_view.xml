@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchace_order_inherit_veiw_form" model="ir.ui.view">
+        <field name="name">purchasepurchase.order.inherit.veiw.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <field name="date_order" position="after">
+                <field name="price_list_id"/>
+            </field>
+            <field name="amount_total" position="after">
+                <field name="total_price"/>
+            </field>
+            <field name="price_subtotal" position="after">
+                <field name="selling_price"/>
+                <field name="subtotal_sale_price"/>
+            </field>
+        </field>
+    </record>
+    <!-- <record id="purchase_order_line_view_form" model="ir.ui.view">
+        <field name="name">purchase.order.line.view.form</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="purchase.purchase_order_line_form2" />
+        <field name="arch" type="xml">
+            <field name="taxes_id" postion="after">
+                <field name="subtotal_sale_price"/>
+            </field>
+            <field name="product_id" postion="after">
+                <field name="subtotal_sale_price"/>
+            </field>
+        </field>
+    </record> -->
+
+    <record id="purchase_list_price_menu_action" model="ir.actions.act_window">
+			<field name="name">Liste de prix</field>
+			<field name="res_model">product.pricelist</field>
+			<field name="view_mode">tree,form,kanban</field>
+			<field name="domain">[]</field>
+			<field name="help" type="html">
+				<p class="oe_view_noconten_create">
+					Pas de donnée à afficher
+				</p>
+			</field>
+		</record>
+
+    <menuitem
+        id="purchase_list_price_menu"
+        name="Liste de prix"
+        action="purchase_list_price_menu_action"
+        parent="purchase.menu_purchase_products"
+        sequence="10"/>
+</odoo>

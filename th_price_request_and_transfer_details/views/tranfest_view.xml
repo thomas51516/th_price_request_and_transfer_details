@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <field name="origin" position="after">
+                <field name="price_list_id"/>
+            </field>
+            <xpath expr="//notebook[1]" position="after">
+                <div>
+                    <group>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                            <field name="total_price_achat_ht"/>
+                            <field name="tota_taxe"/>
+                            <field name="total_price_achat_ttc"/>
+                            <field name="total_price"/>
+                        </group>
+                    </group>
+                </div>
+            </xpath>
+             <field name="quantity_done" position="after">
+                <field name="selling_price"/>
+                <field name="subtotal_sale_price"/>
+                <field name="subtotal_purchase_price"/>
+             </field>
+            <!-- <field name="location_dest_id" position="after">
+                <field name="selling_price"/>
+                <field name="subtotal_sale_price"/>
+                <field name="subtotal_purchase_price"/>
+             </field> -->
+        </field>
+    </record>
+    <record id="stock_move_line_inherit_form" model="ir.ui.view">
+        <field name="name">stock.move.line.inherit.form</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_form" />
+        <field name="arch" type="xml">
+            <field name="location_dest_id" position="after">
+                <field name="selling_price"/>
+                <field name="subtotal_sale_price"/>
+                <field name="subtotal_purchase_price"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="sotck_move_line_inherit_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.inherit.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_tree" />
+        <field name="arch" type="xml">
+            <field name="location_dest_id" position="after">
+                <field name="selling_price"/>
+                <field name="subtotal_sale_price"/>
+                <field name="subtotal_purchase_price"/>
+            </field>
+        </field>
+    </record>
+</odoo>
